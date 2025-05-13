@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Travel Diaries</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+    <div class="header-content">
+        <h1><i class="fas fa-book-open"></i> My Travel Diaries</h1>
+        
+        <div class="header-widgets">
+            <!-- Digital Clock -->
+            <div id="digital-clock" class="clock-widget">
+                <i class="fas fa-clock"></i>
+                <span id="time">00:00:00</span>
+                <span id="date">--/--/----</span>
+            </div>
+            
+            <!-- Existing Stats -->
+            <div class="travel-stats">
+                <div class="stat-box">
+                    <i class="fas fa-globe-americas"></i>
+                    <span id="country-count">0</span> Countries
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-city"></i>
+                    <span id="city-count">0</span> Cities
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-memories"></i>
+                    <span id="memory-count">0</span> Memories
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="main-content">
+            <div id="map"></div>
+
+            <div class="journal-sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-map-pin"></i> My Travel Memories</h2>
+                    <button id="add-memory-btn" class="primary-btn">
+                        <i class="fas fa-plus"></i> New Entry
+                    </button>
+                </div>
+<button id="reset-memories-btn" class="danger-btn">
+    <i class="fas fa-trash-alt"></i> Clear All Memories
+</button>
+                <div class="search-box">
+                    <select id="location-type" class="styled-select">
+                        <option value="country">Country</option>
+                        <option value="city">City</option>
+                    </select>
+                </div>
+
+                <div class="memories-list" id="memories-list">
+                    <div class="empty-state">
+                        <i class="fas fa-compass"></i>
+                        <p>No memories yet. Start by clicking on the map!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Location Name Modal -->
+    <div id="location-name-modal" class="modal">
+        <div class="modal-content small-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-map-marker-alt"></i> Name This Location</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Enter a name for this <span id="location-type-label">country</span>:</label>
+                    <input type="text" id="location-name-input" placeholder="e.g. Paris, France" autofocus>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-location-btn" class="primary-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Modal -->
+    <div id="memory-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-bookmark"></i> Add Travel Memory</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                    <input type="text" id="memory-location" readonly>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-day"></i> Date</label>
+                        <input type="date" id="memory-date">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-image"></i> Photo URL (optional)</label>
+                        <input type="text" id="memory-photo" placeholder="Paste image URL...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-edit"></i> Notes</label>
+                    <textarea id="memory-notes" rows="5" placeholder="Share your experience..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-memory-btn" class="primary-btn">
+                    <i class="fas fa-save"></i> Save Memory
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+   
